@@ -14,13 +14,30 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ffffff;
     --foreground: #ededed;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+body{
+  font-family: 'Poppins', sans-serif !important;
+  background-color: #ffffff;
 }
+
+
+/* for hero slider  */
+
+/* globals.css */
+.swiper-pagination-bullet {
+  background: #d1d5db;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #000;
+  width: 18px;
+  border-radius: 6px;
+}
+
+
+/* for hero slider  */
