@@ -33,8 +33,10 @@ export default function FeaturedProducts() {
   ];
 
   return (
-    <section className="w-full py-10 px-4 md:px-10">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full py-10">
+
+      {/* Common Container */}
+      <div className="max-w-[1450px] mx-auto px-5 md:px-6 lg:px-10 py-4">
 
         {/* HEADER */}
         <div className="flex items-center justify-between mb-8">
@@ -55,7 +57,8 @@ export default function FeaturedProducts() {
               key={item.id}
               className="bg-white rounded-xl shadow-sm p-4 relative hover:shadow-md transition"
             >
-              {/* DISCOUNT BADGE */}
+
+              {/* DISCOUNT */}
               <div className="absolute top-0 right-3 bg-orange-500 text-white text-xs px-2 py-1 rounded-b-md font-semibold">
                 {item.discount}
               </div>
@@ -81,14 +84,16 @@ export default function FeaturedProducts() {
 
               {/* BUTTON */}
               <div className="flex justify-center">
-                <button className="border border-[#94694C] text-[#94694C] px-4 py-1 rounded-full text-[14px] font-[600] hover:bg-[#94694C] hover:text-white transition">
+                <button className="border border-[#94694C] text-[#94694C] px-4 py-1 rounded-full text-[14px] font-semibold hover:bg-[#94694C] hover:text-white transition">
                   Add to cart
                 </button>
               </div>
+
             </div>
           ))}
 
         </div>
+
       </div>
     </section>
   );
