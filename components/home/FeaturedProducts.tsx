@@ -1,6 +1,13 @@
 "use client";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+
 export default function FeaturedProducts() {
+
   const products = [
     {
       id: 1,
@@ -33,64 +40,162 @@ export default function FeaturedProducts() {
   ];
 
   return (
-    <section className="w-full py-10">
+    <section className="w-full py-10 overflow-hidden">
 
       {/* Common Container */}
-      <div className="max-w-[1450px] mx-auto px-5 md:px-6 lg:px-10 py-4">
+      <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-10 py-4">
 
         {/* HEADER */}
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-xl md:text-[32px] font-semibold text-black">
+
+          <h2 className="text-[26px] md:text-[32px] font-semibold text-black">
             Featured Product
           </h2>
 
           <button className="flex items-center gap-2 text-green-600 font-medium hover:gap-3 transition-all">
             View all →
           </button>
+
         </div>
 
-        {/* PRODUCTS GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {/* SLIDER */}
+        <div className="relative">
 
-          {products.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white rounded-xl shadow-sm p-4 relative hover:shadow-md transition"
-            >
+          <Swiper
+            modules={[Navigation]}
+            navigation={{
+              nextEl: ".custom-next",
+              prevEl: ".custom-prev",
+            }}
+            spaceBetween={20}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+            }}
+          >
 
-              {/* DISCOUNT */}
-              <div className="absolute top-0 right-3 bg-orange-500 text-white text-xs px-2 py-1 rounded-b-md font-semibold">
-                {item.discount}
-              </div>
+            {products.map((item) => (
+              <SwiperSlide key={item.id}>
 
-              {/* IMAGE */}
-              <div className="flex justify-center items-center h-[250px] mb-4">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="h-full object-contain"
-                />
-              </div>
+                {/* PRODUCT CARD */}
+                <div
+                  className="
+                    bg-white
+                    rounded-2xl
+                    p-4
+                    relative
+                    transition
+                    mx-auto
+                    w-full
+                    max-w-[260px]
+                    sm:max-w-full
+                    shadow-[0px_0px_20px_rgba(0,0,0,0.08)]
+                    hover:shadow-[0px_0px_25px_rgba(0,0,0,0.12)]
+                  "
+                >
 
-              {/* TITLE */}
-              <h3 className="text-[16px] text-gray-700 text-center mb-2">
-                {item.name}
-              </h3>
+                  {/* DISCOUNT */}
+                  <div className="absolute top-0 right-3 bg-orange-500 text-white text-xs px-2 py-1 rounded-b-md font-semibold">
+                    {item.discount}
+                  </div>
 
-              {/* PRICE */}
-              <p className="text-center text-[20px] font-semibold text-[#474747] mb-3">
-                {item.price}
-              </p>
+                  {/* IMAGE */}
+                  <div
+                    className="
+                      flex
+                      justify-center
+                      items-center
+                      h-[260px]
+                      sm:h-[240px]
+                      md:h-[250px]
+                      mb-4
+                    "
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
 
-              {/* BUTTON */}
-              <div className="flex justify-center">
-                <button className="border border-[#94694C] text-[#94694C] px-4 py-1 rounded-full text-[14px] font-semibold hover:bg-[#94694C] hover:text-white transition">
-                  Add to cart
-                </button>
-              </div>
+                  {/* TITLE */}
+                  <h3 className="text-[17px] text-gray-700 text-center mb-2">
+                    {item.name}
+                  </h3>
 
-            </div>
-          ))}
+                  {/* PRICE */}
+                  <p className="text-center text-[22px] font-semibold text-[#474747] mb-4">
+                    {item.price}
+                  </p>
+
+                  {/* BUTTON */}
+                  <div className="flex justify-center">
+                    <button className="border border-[#94694C] text-[#94694C] px-5 py-2 rounded-full text-[15px] font-semibold hover:bg-[#94694C] hover:text-white transition">
+                      Add to cart
+                    </button>
+                  </div>
+
+                </div>
+
+              </SwiperSlide>
+            ))}
+
+          </Swiper>
+
+          {/* LEFT BUTTON */}
+          <button
+            className="
+              custom-prev
+              absolute
+              left-0
+              top-1/2
+              -translate-y-1/2
+              z-10
+              w-10
+              h-10
+              rounded-full
+              bg-[#94694C]
+              shadow-lg
+              flex
+              items-center
+              justify-center
+              text-xl
+              text-white
+            "
+          >
+            ←
+          </button>
+
+          {/* RIGHT BUTTON */}
+          <button
+            className="
+              custom-next
+              absolute
+              right-0
+              top-1/2
+              -translate-y-1/2
+              z-10
+              w-10
+              h-10
+              rounded-full
+              bg-[#94694C]
+              shadow-lg
+              flex
+              items-center
+              justify-center
+              text-xl
+              text-white
+            "
+          >
+            →
+          </button>
 
         </div>
 

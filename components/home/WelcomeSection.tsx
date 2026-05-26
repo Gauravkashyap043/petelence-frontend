@@ -5,49 +5,72 @@ import Image from "next/image";
 export default function WelcomeSection() {
   return (
     <section className="w-full py-10 overflow-hidden">
-
+      
       {/* Common Container */}
-      <div className="max-w-[1450px] mx-auto px-5 md:px-6 lg:px-10 py-4">
+      <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-10 py-4">
 
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+        {/* MAIN FLEX */}
+<div
+  className="
+    flex
+    flex-col-reverse
+    lg:flex-row
+    items-center
+    gap-8
+    lg:gap-8
+  "
+>
 
           {/* LEFT IMAGE */}
-          <div className="
-          w-full
-          lg:w-1/2
-          flex
-          justify-center lg:justify-start
-          shrink-0
-          ">
-
+          <div
+            className="
+              w-full
+              lg:w-1/2
+              flex
+              justify-center
+              lg:justify-start
+              shrink-0
+            "
+          >
             <Image
               src="/assets/home/image 3.png"
               alt="Pet Food"
               width={450}
               height={450}
               className="
-              w-full
-              max-w-[450px]
-              h-auto
-              object-contain
-              select-none
+                w-full
+                max-w-[260px]
+                sm:max-w-[320px]
+                md:max-w-[380px]
+                lg:max-w-[450px]
+                h-auto
+                object-contain
+                select-none
               "
               priority
             />
-
           </div>
 
-
           {/* RIGHT CONTENT */}
-          <div className="w-full lg:w-1/2 min-w-0">
-
-            <h1 className="
-            text-3xl
-            md:text-[50px]
-            font-bold
-            text-black
-            leading-tight
-            ">
+<div
+  className="
+    w-full
+    lg:w-[60%]
+    min-w-0
+    text-left
+    lg:pl-0
+  "
+>
+            <h1
+              className="
+                text-[38px]
+                sm:text-[48px]
+                md:text-[58px]
+                font-bold
+                text-black
+                leading-tight
+              "
+            >
               Welcome
               <br />
               to{" "}
@@ -56,134 +79,131 @@ export default function WelcomeSection() {
               </span>
             </h1>
 
-            <p className="text-black mt-3 text-sm md:text-base">
+            <p
+              className="
+                text-black
+                mt-4
+                text-[16px]
+                sm:text-[18px]
+                md:text-[20px]
+                max-w-[650px]
+              "
+            >
               Your pet’s health and well-being are our top priority.
             </p>
 
-
-            <div className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            gap-6
-            mt-8
-            ">
+            {/* GRID */}
+            <div
+              className="
+                grid
+                grid-cols-1
+                sm:grid-cols-2
+                gap-10
+                mt-8
+              "
+            >
 
               {/* ITEM */}
-
               <div className="flex items-start gap-3">
 
-  {/* ICON */}
-  <div className="w-6 h-6 relative shrink-0">
+                <div className="w-7 h-7 relative shrink-0 mt-1">
+                  <Image
+                    src="/assets/home/pet-comb.svg"
+                    alt="grooming"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
 
-    <Image
-      src="/assets/home/grooming-icon.svg"
-      alt="grooming"
-      fill
-      className="object-contain"
-    />
+                <div>
+                  <h3 className="text-[20px] sm:text-[22px] font-bold">
+                    Pet Grooming
+                  </h3>
 
-  </div>
+                  <p className="text-gray-500 text-[16px] sm:text-[18px]">
+                    Dolor sit amet, dolor gravida,
+                    placerat libero lorem ipsum.
+                  </p>
+                </div>
 
-  <div>
-    <h3 className="text-[20px] font-bold">
-      Pet Grooming
-    </h3>
+              </div>
 
-    <p className="text-gray-500 text-[16px]">
-      Dolor sit amet, dolor gravida,
-      placerat libero lorem ipsum.
-    </p>
-  </div>
+              {/* ITEM */}
+              <div className="flex items-start gap-3">
 
-</div>
+                <div className="w-7 h-7 relative shrink-0 mt-1">
+                  <Image
+                    src="/assets/home/hotel.svg"
+                    alt="food"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
 
+                <div>
+                  <h3 className="text-[20px] sm:text-[22px] font-bold">
+                    Pet Food
+                  </h3>
 
-<div className="flex items-start gap-3">
+                  <p className="text-gray-500 text-[16px] sm:text-[18px]">
+                    Dolor sit amet, dolor gravida,
+                    placerat libero lorem ipsum.
+                  </p>
+                </div>
 
-  {/* ICON */}
-  <div className="w-6 h-6 relative shrink-0">
+              </div>
 
-    <Image
-      src="/assets/home/food-icon.svg"
-      alt="food"
-      fill
-      className="object-contain"
-    />
+              {/* ITEM */}
+              <div className="flex items-start gap-3">
 
-  </div>
+                <div className="w-7 h-7 relative shrink-0 mt-1">
+                  <Image
+                    src="/assets/home/syringe_1_.svg"
+                    alt="vaccination"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
 
-  <div>
-    <h3 className="text-[20px] font-bold">
-      Pet Food
-    </h3>
+                <div>
+                  <h3 className="text-[20px] sm:text-[22px] font-bold">
+                    Vaccination
+                  </h3>
 
-    <p className="text-gray-500 text-[16px]">
-      Dolor sit amet, dolor gravida,
-      placerat libero lorem ipsum.
-    </p>
-  </div>
+                  <p className="text-gray-500 text-[16px] sm:text-[18px]">
+                    Dolor sit amet, dolor gravida,
+                    placerat libero lorem ipsum.
+                  </p>
+                </div>
 
-</div>
+              </div>
 
+              {/* ITEM */}
+              <div className="flex items-start gap-3">
 
-<div className="flex items-start gap-3">
+                <div className="w-7 h-7 relative shrink-0 mt-1">
+                  <Image
+                    src="/assets/home/first-aid-kit.svg"
+                    alt="pet care"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
 
-  {/* ICON */}
-  <div className="w-6 h-6 relative shrink-0">
+                <div>
+                  <h3 className="text-[20px] sm:text-[22px] font-bold">
+                    Pet Care
+                  </h3>
 
-    <Image
-      src="/assets/home/vaccination-icon.svg"
-      alt="vaccination"
-      fill
-      className="object-contain"
-    />
+                  <p className="text-gray-500 text-[16px] sm:text-[18px]">
+                    Dolor sit amet, dolor gravida,
+                    placerat libero lorem ipsum.
+                  </p>
+                </div>
 
-  </div>
-
-  <div>
-    <h3 className="text-[20px] font-bold">
-      Vaccination
-    </h3>
-
-    <p className="text-gray-500 text-[16px]">
-      Dolor sit amet, dolor gravida,
-      placerat libero lorem ipsum.
-    </p>
-  </div>
-
-</div>
-
-
-<div className="flex items-start gap-3">
-
-  {/* ICON */}
-  <div className="w-6 h-6 relative shrink-0">
-
-    <Image
-      src="/assets/home/petcare-icon.svg"
-      alt="pet care"
-      fill
-      className="object-contain"
-    />
-
-  </div>
-
-  <div>
-    <h3 className="text-[20px] font-bold">
-      Pet Care
-    </h3>
-
-    <p className="text-gray-500 text-[16px]">
-      Dolor sit amet, dolor gravida,
-      placerat libero lorem ipsum.
-    </p>
-  </div>
-
-</div>
+              </div>
 
             </div>
-
           </div>
 
         </div>

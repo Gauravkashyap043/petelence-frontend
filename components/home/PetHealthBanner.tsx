@@ -24,7 +24,24 @@ export default function PetHealthBanner() {
           alt="Dog"
           width={350}
           height={300}
-          className="hidden md:block absolute left-[-20px] bottom-[-65px] w-[350px] h-[300px] object-contain"
+          className="
+            hidden md:block 
+            absolute left-[-20px] bottom-[-65px] 
+            w-[350px] h-[300px] object-contain
+          "
+        />
+
+        {/* MOBILE DOG IMAGE */}
+        <Image
+          src="/assets/home/image 19.png"
+          alt="Dog"
+          width={180}
+          height={160}
+          className="
+            md:hidden
+            absolute left-[-70px] bottom-[-70px]
+            w-[180px] h-auto object-contain
+          "
         />
 
         {/* RIGHT FOOD IMAGE */}
@@ -33,16 +50,40 @@ export default function PetHealthBanner() {
           alt="Food"
           width={302}
           height={314}
-          className="hidden md:block absolute right-[-20px] top-[-70px] w-[302px] h-[314px] object-contain"
+          className="
+            hidden md:block 
+            absolute right-[-20px] top-[-70px] 
+            w-[302px] h-[314px] object-contain
+          "
+        />
+
+        {/* MOBILE FOOD IMAGE */}
+        <Image
+          src="/assets/home/image 20.png"
+          alt="Food"
+          width={170}
+          height={170}
+          className="
+            md:hidden
+            absolute right-[-70px] top-[-70px]
+            w-[170px] h-auto object-contain
+          "
         />
 
         {/* CENTER CONTENT */}
-        <div className="text-center text-white max-w-xl">
-          <h2 className="text-2xl md:text-[56px] font-semibold leading-tight">
+        <div className="text-center text-white px-0">
+
+          {/* DESKTOP TEXT SAME */}
+          <h2 className="hidden md:block text-2xl md:text-[56px] font-semibold leading-tight">
             Take control of your <br /> pet’s health
           </h2>
 
-          <p className="text-sm md:text-[16px] mt-4 text-white opacity-90">
+          {/* MOBILE TEXT SMALL */}
+          <h2 className="md:hidden text-[30px] font-semibold leading-[40px]">
+            Take control of your pet’s health
+          </h2>
+
+          <p className="text-[15px] md:text-[16px] mt-4 text-white opacity-90">
             The process of cooking at lower temperatures & at slower
             rates leads to an increase in nutrient retention.
           </p>

@@ -27,7 +27,6 @@ export default function Newsletter() {
       {/* Paw Pattern */}
       <div className="absolute inset-0 opacity-10 bg-[url('/images/paw.png')] bg-repeat"></div>
 
-
       {/* Common Container */}
       <div className="relative max-w-7xl mx-auto px-5 md:px-6 lg:px-10">
 
@@ -36,21 +35,30 @@ export default function Newsletter() {
           {/* LEFT CONTENT */}
           <div className="w-full lg:w-1/2 text-white min-w-0">
 
-            <h2 className="text-2xl md:text-[48px] font-semibold leading-tight">
+            {/* DESKTOP SAME */}
+            <h2 className="hidden md:block text-2xl md:text-[48px] font-semibold leading-tight">
               Subscribe to our <br />
               newsletter
             </h2>
 
-            {/* INPUT + BUTTON */}
-            <div className="mt-6 w-full max-w-md">
+            {/* MOBILE CENTER TEXT */}
+            <h2 className="md:hidden text-[34px] font-semibold leading-[42px] text-center">
+              Subscribe to our <br />
+              newsletter
+            </h2>
 
-              <div className="
-              flex
-              w-full
-              overflow-hidden
-              rounded-full
-              bg-white
-              ">
+            {/* DESKTOP INPUT SAME */}
+            <div className="hidden md:block mt-6 w-full max-w-md">
+
+              <div
+                className="
+                flex
+                w-full
+                overflow-hidden
+                rounded-full
+                bg-white
+                "
+              >
 
                 <input
                   type="email"
@@ -82,40 +90,80 @@ export default function Newsletter() {
                 </button>
 
               </div>
-
             </div>
 
-          </div>
+            {/* MOBILE INPUT + BUTTON */}
+            {/* MOBILE INPUT + BUTTON */}
+<div className="md:hidden mt-6 w-full flex flex-col items-center">
 
+  <input
+    type="email"
+    placeholder="Enter your email here.."
+    className="
+    w-full
+    max-w-[340px]
+    px-6
+    py-4
+    rounded-full
+    bg-white
+    text-gray-700
+    text-[17px]
+    outline-none
+    "
+  />
+
+  <button
+    className="
+    mt-4
+    w-full
+    max-w-[340px]
+    bg-[#94694C]
+    text-white
+    py-4
+    rounded-full
+    text-[18px]
+    font-medium
+    hover:bg-[#6f472c]
+    transition
+    "
+  >
+    subscribe
+  </button>
+
+</div>
+
+          </div>
 
           {/* RIGHT IMAGE */}
           <div className="w-full lg:w-1/2 flex justify-center">
 
-  <div className="
-  bg-white
-  rounded-[200px]
-  p-5
-  shrink-0
-  ">
+            <div
+              className="
+              bg-white
+              rounded-[200px]
+              p-5
+              shrink-0
+              "
+            >
 
-    <Image
-      src="/assets/home/image 26.png"
-      alt="Dog"
-      width={250}
-      height={250}
-      className="
-      w-[180px]
-      md:w-[220px]
-      lg:w-[250px]
-      h-auto
-      object-contain
-      select-none
-      "
-    />
+              <Image
+                src="/assets/home/image 26.png"
+                alt="Dog"
+                width={250}
+                height={250}
+                className="
+                w-[180px]
+                md:w-[220px]
+                lg:w-[250px]
+                h-auto
+                object-contain
+                select-none
+                "
+              />
 
-  </div>
+            </div>
 
-</div>
+          </div>
 
         </div>
       </div>

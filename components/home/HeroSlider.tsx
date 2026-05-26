@@ -28,7 +28,16 @@ export default function HeroSlider() {
       >
         {slides.map((img, index) => (
           <SwiperSlide key={index}>
-            <div className="w-full h-[540px] mx-auto">
+            <div
+              className="
+                w-full 
+                h-[151px] 
+                sm:h-[220px] 
+                md:h-[320px] 
+                lg:h-[540px]
+                mx-auto
+              "
+            >
               <img
                 src={img}
                 alt="slide"
