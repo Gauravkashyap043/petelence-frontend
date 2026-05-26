@@ -30,6 +30,7 @@ export default function WelcomeSection() {
               justify-center
               lg:justify-start
               shrink-0
+              animate-slideInLeft
             "
           >
             <Image
@@ -46,6 +47,7 @@ export default function WelcomeSection() {
                 h-auto
                 object-contain
                 select-none
+                animate-float
               "
               priority
             />
@@ -59,13 +61,15 @@ export default function WelcomeSection() {
     min-w-0
     text-left
     lg:pl-0
+    animate-slideInRight
   "
 >
             <h1
               className="
-                text-[38px]
-                sm:text-[48px]
-                md:text-[58px]
+                text-[32px]
+                sm:text-[42px]
+                md:text-[52px]
+                lg:text-[58px]
                 font-bold
                 text-black
                 leading-tight
@@ -74,8 +78,8 @@ export default function WelcomeSection() {
               Welcome
               <br />
               to{" "}
-              <span className="text-[#4c9e84]">
-                NaturalPet
+              <span className="logo-shimmer">
+                Pete&apos;llence
               </span>
             </h1>
 
@@ -98,8 +102,9 @@ export default function WelcomeSection() {
                 grid
                 grid-cols-1
                 sm:grid-cols-2
-                gap-10
-                mt-8
+                gap-6
+                sm:gap-8
+                mt-6
               "
             >
 

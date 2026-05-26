@@ -140,7 +140,7 @@ export default function FooterCTA() {
 
       {/* COPYRIGHT */}
       <div className="relative z-10 flex justify-center pb-8 pt-5 text-[14px] text-gray-700 text-center px-4 italic">
-        © 1996–2022 NaturalPet. All Rights Reserved.
+        © 2026 Pete&apos;llence. All Rights Reserved.
       </div>
 
     </section>

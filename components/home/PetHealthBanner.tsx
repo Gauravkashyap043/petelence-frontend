@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function PetHealthBanner() {
   return (
-    <section className="relative w-full h-[546px] mx-auto overflow-hidden bg-[#4c9e84] py-16 px-20">
+    <section className="relative w-full min-h-[400px] md:h-[546px] mx-auto overflow-hidden bg-[#4c9e84] py-12 px-5 sm:px-10 md:px-20">
 
       {/* Paw Pattern Overlay */}
       <Image
@@ -88,9 +88,9 @@ export default function PetHealthBanner() {
             rates leads to an increase in nutrient retention.
           </p>
 
-          <button className="mt-6 bg-[#8B5E3C] hover:bg-[#6f472c] text-white px-6 py-2 rounded-full text-sm transition">
+          <a href="/shop" className="mt-6 inline-block bg-[#8B5E3C] hover:bg-[#6f472c] text-white px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 active:scale-95 shadow-md">
             Shop all food
-          </button>
+          </a>
         </div>
 
       </div>

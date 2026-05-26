@@ -1,18 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-
-const allProducts = [
-  { id: 1, name: "Intelligent Marble Knife", price: "$132.93", image: "/assets/home/image 14.png" },
-  { id: 2, name: "Premium Dog Leash", price: "$45.00", image: "/assets/home/image 14.png" },
-  { id: 3, name: "Organic Pet Shampoo", price: "$28.50", image: "/assets/home/image 14.png" },
-  { id: 4, name: "Cozy Pet Blanket", price: "$67.20", image: "/assets/home/image 14.png" },
-  { id: 5, name: "Stainless Steel Bowl", price: "$19.99", image: "/assets/home/image 14.png" },
-  { id: 6, name: "Interactive Toy Ball", price: "$34.00", image: "/assets/home/image 14.png" },
-  { id: 7, name: "Grooming Brush Set", price: "$52.80", image: "/assets/home/image 14.png" },
-  { id: 8, name: "Vitamin Treat Pack", price: "$24.99", image: "/assets/home/image 14.png" },
-];
+import { products } from "@/lib/products";
 
 const PER_PAGE_DESKTOP = 4;
 const PER_PAGE_MOBILE = 2;
@@ -20,175 +11,92 @@ const PER_PAGE_MOBILE = 2;
 export default function TrendingProducts() {
   const [page, setPage] = useState(0);
 
-  const totalPagesDesktop = Math.ceil(allProducts.length / PER_PAGE_DESKTOP);
-  const totalPagesMobile = Math.ceil(allProducts.length / PER_PAGE_MOBILE);
+  const totalPagesDesktop = Math.ceil(products.length / PER_PAGE_DESKTOP);
+  const totalPagesMobile = Math.ceil(products.length / PER_PAGE_MOBILE);
 
-  const visibleDesktopProducts = allProducts.slice(
-    page * PER_PAGE_DESKTOP,
-    page * PER_PAGE_DESKTOP + PER_PAGE_DESKTOP
-  );
-
-  const visibleMobileProducts = allProducts.slice(
-    page * PER_PAGE_MOBILE,
-    page * PER_PAGE_MOBILE + PER_PAGE_MOBILE
-  );
+  const visibleDesktop = products.slice(page * PER_PAGE_DESKTOP, page * PER_PAGE_DESKTOP + PER_PAGE_DESKTOP);
+  const visibleMobile = products.slice(page * PER_PAGE_MOBILE, page * PER_PAGE_MOBILE + PER_PAGE_MOBILE);
 
   const navigate = (dir: number) => {
     setPage((prev) => {
-      const total =
-        typeof window !== "undefined" && window.innerWidth < 1024
-          ? totalPagesMobile
-          : totalPagesDesktop;
-
+      const total = typeof window !== "undefined" && window.innerWidth < 1024 ? totalPagesMobile : totalPagesDesktop;
       return (prev + dir + total) % total;
     });
   };
 
-  return (
-    <section className="w-full py-10 overflow-hidden">
-      <div className="max-w-[1450px] mx-auto px-5 md:px-6 lg:px-10 py-4">
-
-        {/* HEADER */}
-        <div className="flex items-center justify-between gap-4 mb-5">
-          <h2 className="text-xl md:text-[34px] font-semibold">
-            Trending Products
-          </h2>
-
-          <button className="text-green-600 font-medium flex items-center gap-2 hover:gap-3 transition whitespace-nowrap">
-            View all →
+  const ProductRow = ({ item }: { item: typeof products[0] }) => (
+    <Link href={`/shop/${item.id}`} className="block group">
+      <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm card-hover min-h-[140px] sm:min-h-[160px]">
+        <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] lg:w-[130px] lg:h-[130px] bg-gray-100 flex items-center justify-center rounded-xl shrink-0 overflow-hidden group-hover:bg-gray-200 transition-colors">
+          <Image
+            src={item.image}
+            alt={item.name}
+            width={130}
+            height={130}
+            className="w-full h-full object-contain select-none transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+        <div className="min-w-0 flex-1">
+          <span className="text-[10px] font-semibold text-[#4C9E84] uppercase tracking-wide">{item.category}</span>
+          <h3 className="text-[13px] sm:text-[14px] text-gray-800 font-medium leading-snug mt-0.5">{item.name}</h3>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="font-bold text-[#474747] text-[18px] sm:text-[20px]">₹{item.price}</span>
+            {item.originalPrice && (
+              <span className="text-[12px] text-gray-400 line-through">₹{item.originalPrice}</span>
+            )}
+          </div>
+          <button
+            className="mt-2.5 border border-[#94694C] text-[#94694C] px-4 py-1.5 rounded-full text-[12px] sm:text-[13px] font-semibold whitespace-nowrap hover:bg-[#94694C] hover:text-white transition-all duration-200 active:scale-95"
+            onClick={(e) => e.preventDefault()}
+          >
+            Add to cart
           </button>
         </div>
+      </div>
+    </Link>
+  );
 
-        {/* DESKTOP UI SAME */}
+  return (
+    <section className="w-full py-10 overflow-hidden">
+      <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-10 py-4">
+
+        {/* HEADER */}
+        <div className="flex items-center justify-between gap-4 mb-6">
+          <h2 className="text-[22px] sm:text-[28px] md:text-[34px] font-semibold">Trending Products</h2>
+          <Link href="/shop" className="text-[#4C9E84] font-medium flex items-center gap-1 hover:gap-2 transition-all whitespace-nowrap text-sm sm:text-base">
+            View all →
+          </Link>
+        </div>
+
+        {/* DESKTOP */}
         <div className="hidden lg:flex gap-10 items-center">
-
-          {/* LEFT GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full lg:w-1/2">
-            {visibleDesktopProducts.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm min-h-[170px]"
-              >
-                <div className="w-[141px] h-[141px] bg-gray-100 flex items-center justify-center rounded-xl shrink-0">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={141}
-                    height={141}
-                    className="w-full h-full object-contain select-none"
-                  />
-                </div>
-
-                <div className="min-w-0">
-                  <h3 className="text-sm text-black">{item.name}</h3>
-
-                  <p className="font-semibold text-[#474747] text-[20px] mt-1">
-                    {item.price}
-                  </p>
-
-                  <button className="mt-3 border border-[#94694C] text-[#94694C] px-4 py-1 rounded-full text-[14px] font-semibold whitespace-nowrap hover:bg-[#94694C] hover:text-white transition">
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full lg:w-1/2">
+            {visibleDesktop.map((item) => <ProductRow key={item.id} item={item} />)}
           </div>
-
-          {/* RIGHT IMAGE */}
           <div className="w-full lg:w-1/2 flex justify-center shrink-0">
-            <Image
-              src="/assets/home/image 13.png"
-              alt="Dog"
-              width={440}
-              height={440}
-              className="w-full max-w-[440px] h-auto object-contain select-none"
-            />
+            <Image src="/assets/home/image 13.png" alt="Dog" width={440} height={440} className="w-full max-w-[440px] h-auto object-contain select-none animate-float" />
           </div>
         </div>
 
-        {/* MOBILE UI */}
+        {/* MOBILE */}
         <div className="lg:hidden">
-
-          {/* 2 CARDS */}
-          <div className="flex flex-col gap-5">
-            {visibleMobileProducts.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm"
-              >
-                <div className="w-[100px] h-[100px] bg-gray-100 flex items-center justify-center rounded-xl shrink-0">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={100}
-                    height={100}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-
-                <div>
-                  <h3 className="text-sm text-black">
-                    {item.name}
-                  </h3>
-
-                  <p className="font-semibold text-[#474747] text-[18px] mt-1">
-                    {item.price}
-                  </p>
-
-                  <button className="mt-3 border border-[#94694C] text-[#94694C] px-4 py-1 rounded-full text-[13px] font-semibold hover:bg-[#94694C] hover:text-white transition">
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            ))}
+          <div className="flex flex-col gap-4">
+            {visibleMobile.map((item) => <ProductRow key={item.id} item={item} />)}
           </div>
-
-          {/* BUTTONS */}
           <div className="flex justify-center gap-4 mt-6">
-            <button
-              onClick={() => navigate(-1)}
-              className="w-10 h-10 rounded-full bg-[#8B5E3C] text-white flex items-center justify-center"
-            >
-              ←
-            </button>
-
-            <button
-              onClick={() => navigate(1)}
-              className="w-10 h-10 rounded-full bg-[#8B5E3C] text-white flex items-center justify-center"
-            >
-              →
-            </button>
+            <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-full bg-[#8B5E3C] text-white flex items-center justify-center hover:bg-[#6d4a2f] transition-colors active:scale-95">←</button>
+            <button onClick={() => navigate(1)} className="w-10 h-10 rounded-full bg-[#8B5E3C] text-white flex items-center justify-center hover:bg-[#6d4a2f] transition-colors active:scale-95">→</button>
           </div>
-
-          {/* IMAGE BELOW BUTTON */}
           <div className="flex justify-center mt-8">
-            <Image
-              src="/assets/home/image 13.png"
-              alt="Dog"
-              width={320}
-              height={320}
-              className="w-full max-w-[320px] h-auto object-contain"
-            />
+            <Image src="/assets/home/image 13.png" alt="Dog" width={300} height={300} className="w-full max-w-[280px] sm:max-w-[320px] h-auto object-contain" />
           </div>
         </div>
 
         {/* DESKTOP BUTTONS */}
         <div className="hidden lg:flex justify-center gap-4 mt-8">
-          <button
-            onClick={() => navigate(-1)}
-            className="w-10 h-10 rounded-full bg-[#8B5E3C] text-white flex items-center justify-center hover:bg-[#6d4a2f] transition"
-          >
-            ←
-          </button>
-
-          <button
-            onClick={() => navigate(1)}
-            className="w-10 h-10 rounded-full bg-[#8B5E3C] text-white flex items-center justify-center hover:bg-[#6d4a2f] transition"
-          >
-            →
-          </button>
+          <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-full bg-[#8B5E3C] text-white flex items-center justify-center hover:bg-[#6d4a2f] transition-colors active:scale-95">←</button>
+          <button onClick={() => navigate(1)} className="w-10 h-10 rounded-full bg-[#8B5E3C] text-white flex items-center justify-center hover:bg-[#6d4a2f] transition-colors active:scale-95">→</button>
         </div>
-
       </div>
     </section>
   );
